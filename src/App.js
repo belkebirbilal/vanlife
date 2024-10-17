@@ -44,6 +44,7 @@ function App() {
             <Route path="income" element={<Income />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>
+          <Route path="host/:id" element={<VansDetails data={data} />} />
         </Route>
       </Routes>
     </BrowserRouter>
