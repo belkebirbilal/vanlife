@@ -55,3 +55,20 @@
 .link-button:hover {
     transform: translate(1px, 1px);
 }
+
+.error {
+    padding: 50px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+    justify-content: space-around;
+}
+
+.error a {
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    padding: 10px 60px;
+    border-radius: 10px;
+}
