@@ -28,7 +28,7 @@ export default function Dashbord({data}) {
             newData.map(van => {
                 return (
                     <Link
-                        to={`../vans/${van.id}`}
+                        to={`/host/${van.id}`}
                         relative="path"
                         key={van.id}
                         className="host-van-link-wrapper"
