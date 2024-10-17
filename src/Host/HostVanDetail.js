@@ -1,36 +1,26 @@
-import { Outlet, useParams } from "react-router-dom"
-import { Link } from "react-router-dom"
+import { useParams , Link } from 'react-router-dom'
 
-export default function HostVanDetail({data}) {
+export default function VansDetails({data}) {
     const {id} = useParams()
-    const van = data.find(el => el.id === id)
+    const vandetails = data.find(el => el.id === id)
+    if (!data) {
+        return <h1>loading...</h1>
+    }
     return (
-        <section>
+        <div className="van-detail-container">
             <Link
                 to=".."
                 relative="path"
                 className="back-button"
             >&larr; <span>Back to all vans</span></Link>
-            <div className="host-van-detail-layout-container">
-                <div className="host-van-detail">
-                    <img src={van.imageUrl} alt="van-image" />
-                    <div className="host-van-detail-info-text">
-                        <i
-                            className={`van-type van-type-${van.type}`}
-                        >
-                            {van.type}
-                        </i>
-                        <h3>{van.name}</h3>
-                        <h4>${van.price}/day</h4>
-                    </div>
-                </div>
-                <nav style={{marginBlock: '10px'}}>
-                    <Link to='.'>detail</Link>
-                    <Link to='pricing'>pricing</Link>
-                    <Link to='photos'>photos</Link>
-                </nav>
-                <Outlet context={van} />
+            <div className="van-detail">
+                <img src={vandetails.imageUrl} alt='van-detail' />
+                <i className={`van-type ${vandetails.type} selected`}>{vandetails.type}</i>
+                <h2>{vandetails.name}</h2>
+                <p className="van-price"><span>${vandetails.price}</span>/day</p>
+                <p>{vandetails.description}</p>
+                <button className="link-button">Rent this van</button>
             </div>
-        </section>
+        </div>
     )
 }
