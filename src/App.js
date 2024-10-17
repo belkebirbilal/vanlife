@@ -14,6 +14,7 @@ import HostVans from './Host/HostVans'
 import Detail from "./Host/Details";
 import Pricing from "./Host/Pricing";
 import Photos from "./Host/Photos";
+import Error from "./Home/Error";
 
 function App() {
   const [data , setData] = useState([])
@@ -45,6 +46,7 @@ function App() {
             <Route path="reviews" element={<Reviews />} />
           </Route>
           <Route path="host/:id" element={<HostVanDetail data={data} />} />
+          <Route path="*" element={<Error />} />
         </Route>
       </Routes>
     </BrowserRouter>
