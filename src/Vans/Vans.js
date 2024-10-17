@@ -2,7 +2,7 @@ import { Link , useSearchParams } from 'react-router-dom'
 import './Vans.css'
 
 export default function Vans({data}) {
-    const [param ,setSearchparam] = useSearchParams()
+    const [param] = useSearchParams()
     const typeFilter = param.get('type')
     const paramBasedVans = typeFilter
         ? data.filter(el => el.type === typeFilter)
