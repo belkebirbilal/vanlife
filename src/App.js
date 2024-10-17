@@ -6,11 +6,11 @@ import Vans from "./Vans/Vans";
 import { useState , useEffect } from "react";
 import VansDetails from "./Vans/VansDetails"
 import Host from './Host/Host'
+import HostVanDetail from './Host/HostVanDetail'
 import Dashbord from './Host/Dashbord'
 import Income from './Host/Income'
 import Reviews from './Host/Reviews'
 import HostVans from './Host/HostVans'
-import HostVanDetail from './Host/HostVanDetail'
 import Detail from "./Host/Details";
 import Pricing from "./Host/Pricing";
 import Photos from "./Host/Photos";
@@ -44,7 +44,7 @@ function App() {
             <Route path="income" element={<Income />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>
-          <Route path="host/:id" element={<VansDetails data={data} />} />
+          <Route path="host/:id" element={<HostVanDetail data={data} />} />
         </Route>
       </Routes>
     </BrowserRouter>
