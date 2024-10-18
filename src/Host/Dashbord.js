@@ -1,17 +1,7 @@
-import { useState , useEffect } from "react"
-import { Link } from "react-router-dom"
+import { Link , useLoaderData } from "react-router-dom"
 export default function Dashbord() {
-    const [newData , setnewData] = useState([])
-    const [loading , setLoading] = useState(true)
-    useEffect(() => {
-        async function getnewData() {
-            const newData = await fetch('https://api.jsonbin.io/v3/b/670aa770ad19ca34f8b73e1b')
-            const res = await newData.json()
-            setnewData(res.record)
-            setLoading(false)
-        }
-        getnewData()
-    }, [])
+    const data = useLoaderData()
+    console.log(data)
     return (
         <div className="dashbord">
             <div className="welcome">
@@ -23,9 +13,7 @@ export default function Dashbord() {
                 <h3>Review score 5.0/5</h3>
             </div>
             <div className="listedVans" >
-            {loading ?
-            <h1>loading...</h1> :
-            newData.map(van => {
+            {data.map(van => {
                 return (
                     <Link
                         to={`/host/${van.id}`}

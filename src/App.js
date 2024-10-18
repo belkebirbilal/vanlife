@@ -29,7 +29,7 @@ function App() {
       <Route path="vans" element={<Vans />} loader={loader} />
       <Route path="vans/:id" element={<VansDetails />} loader={loader} />
       <Route path="host" element={<Host />}>
-        <Route index element={<Dashbord />} />
+        <Route index element={<Dashbord />}  loader={loader} />
         <Route path="van" element={<HostVans />} loader={loader} />
         <Route path="van/:id" element={<HostVanDetail />} loader={loader} >
           <Route index element={<Detail />} />
