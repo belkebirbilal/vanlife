@@ -1,7 +1,8 @@
-import { Link , useSearchParams } from 'react-router-dom'
+import { Link , useSearchParams , useLoaderData } from 'react-router-dom'
 import './Vans.css'
 
-export default function Vans({data}) {
+export default function Vans() {
+    const data = useLoaderData()
     const [param] = useSearchParams()
     const typeFilter = param.get('type')
     const paramBasedVans = typeFilter

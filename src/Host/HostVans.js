@@ -1,11 +1,12 @@
-import { Link } from 'react-router-dom'
-import { useState , useEffect} from 'react'
-export default function HostVans({data}) {
+import { Link , useLoaderData } from 'react-router-dom'
+import { useState , useEffect } from 'react'
+export default function HostVans() {
+    const data = useLoaderData()
     const hostvans = [data[0] , data[1] , data[2]]
     const [loading , setLoading] = useState(true)
     useEffect(() => {
         if (data.length > 0) {
-            setLoading(false); 
+            setLoading(false);
         }
     }, [data]);
     return (

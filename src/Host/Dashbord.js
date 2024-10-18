@@ -1,6 +1,6 @@
 import { useState , useEffect } from "react"
 import { Link } from "react-router-dom"
-export default function Dashbord({data}) {
+export default function Dashbord() {
     const [newData , setnewData] = useState([])
     const [loading , setLoading] = useState(true)
     useEffect(() => {
@@ -29,6 +29,7 @@ export default function Dashbord({data}) {
                 return (
                     <Link
                         to={`/host/${van.id}`}
+                        state={{type: van.type}}
                         relative="path"
                         key={van.id}
                         className="host-van-link-wrapper"

@@ -1,26 +1,59 @@
-import { useParams , Link } from 'react-router-dom'
+import { useParams , Link ,useLoaderData , Outlet , NavLink } from 'react-router-dom'
 
-export default function VansDetails({data}) {
+export default function VansDetails() {
+    const data = useLoaderData()
     const {id} = useParams()
-    const vandetails = data.find(el => el.id === id)
-    if (!data) {
-        return <h1>loading...</h1>
+    const currentVan = data.find(el => el.id === id)
+    const activeStyles = {
+        fontWeight: "bold",
+        textDecoration: "underline",
+        color: "#161616"
     }
     return (
-        <div className="van-detail-container">
+        <section>
             <Link
                 to=".."
                 relative="path"
                 className="back-button"
             >&larr; <span>Back to all vans</span></Link>
-            <div className="van-detail">
-                <img src={vandetails.imageUrl} alt='van-detail' />
-                <i className={`van-type ${vandetails.type} selected`}>{vandetails.type}</i>
-                <h2>{vandetails.name}</h2>
-                <p className="van-price"><span>${vandetails.price}</span>/day</p>
-                <p>{vandetails.description}</p>
-                <button className="link-button">Rent this van</button>
+
+            <div className="host-van-detail-layout-container">
+                <div className="host-van-detail">
+                    <img src={currentVan.imageUrl} alt='current' />
+                    <div className="host-van-detail-info-text">
+                        <i
+                            className={`van-type van-type-${currentVan.type}`}
+                        >
+                            {currentVan.type}
+                        </i>
+                        <h3>{currentVan.name}</h3>
+                        <h4>${currentVan.price}/day</h4>
+                    </div>
+                </div>
+
+                <nav style={{marginBlock: '20px'}} className="host-van-detail-nav">
+                    <NavLink
+                        to="."
+                        end
+                        style={({ isActive }) => isActive ? activeStyles : null}
+                    >
+                        Details
+                    </NavLink>
+                    <NavLink
+                        to="pricing"
+                        style={({ isActive }) => isActive ? activeStyles : null}
+                    >
+                        Pricing
+                    </NavLink>
+                    <NavLink
+                        to="photos"
+                        style={({ isActive }) => isActive ? activeStyles : null}
+                    >
+                        Photos
+                    </NavLink>
+                </nav>
+                <Outlet context={{ currentVan }} />
             </div>
-        </div>
+        </section>
     )
 }

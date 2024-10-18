@@ -1,15 +1,11 @@
-import { useParams , Link , useLocation , useLoaderData} from 'react-router-dom'
-import './VansDetails.css'
+import { Link , useLoaderData , useLocation , useParams } from "react-router-dom"
 
-export default function VansDetails() {
+export default function DashbordVanDetail() {
     const data = useLoaderData()
     const {id} = useParams()
     const location = useLocation()
     const searchParam = location.state.type
     const vandetails = data.find(el => el.id === id)
-    if (!data) {
-        return <h1>loading...</h1>
-    }
     return (
         <div className="van-detail-container">
             <Link
