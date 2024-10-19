@@ -1,7 +1,6 @@
 import { Link , useLoaderData } from "react-router-dom"
 export default function Dashbord() {
     const data = useLoaderData()
-    console.log(data)
     return (
         <div className="dashbord">
             <div className="welcome">

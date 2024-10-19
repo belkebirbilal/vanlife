@@ -15,6 +15,7 @@ import Pricing from "./Host/Pricing";
 import Photos from "./Host/Photos";
 import DashbordVanDetail from "./Host/DashbordVanDetails";
 import Error from "./Home/Error";
+import ErrorHandler from "./ErrorHandler";
 import { getVans } from "./Api";
 
 function loader() {
@@ -26,19 +27,43 @@ function App() {
     <Route path="/" element={<Home />}>
       <Route index element={<HomeContent />} />
       <Route path="about" element={<About />} />
-      <Route path="vans" element={<Vans />} loader={loader} />
-      <Route path="vans/:id" element={<VansDetails />} loader={loader} />
+      <Route path="vans"
+        element={<Vans />}
+        loader={loader}
+        errorElement={<ErrorHandler />}
+      />
+      <Route path="vans/:id"
+        element={<VansDetails />}
+        loader={loader}
+        errorElement={<ErrorHandler />}
+      />
       <Route path="host" element={<Host />}>
-        <Route index element={<Dashbord />}  loader={loader} />
-        <Route path="van" element={<HostVans />} loader={loader} />
-        <Route path="van/:id" element={<HostVanDetail />} loader={loader} >
+        <Route index
+          element={<Dashbord />}
+          loader={loader}
+          errorElement={<ErrorHandler />}
+        />
+        <Route path="van"
+          element={<HostVans />}
+          loader={loader}
+          errorElement={<ErrorHandler />}
+        />
+        <Route path="van/:id"
+          element={<HostVanDetail />}
+          loader={loader}
+          errorElement={<ErrorHandler />}
+        >
           <Route index element={<Detail />} />
           <Route path='pricing' element={<Pricing />} />
           <Route path='photos' element={<Photos />} />
         </Route>
         <Route path="income" element={<Income />} />
         <Route path="reviews" element={<Reviews />} />
-      <Route path=":id" element={<DashbordVanDetail />} loader={loader} />
+      <Route path=":id"
+        element={<DashbordVanDetail />}
+        loader={loader}
+        errorElement={<ErrorHandler />}
+      />
       </Route>
       <Route path="*" element={<Error />} />
     </Route>
