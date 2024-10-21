@@ -12,7 +12,7 @@ export default function DashbordVanDetail() {
                 to={`..${searchParam ? `?type=${searchParam}` : ""}`}
                 relative="path"
                 className="back-button"
-            >&larr; <span>{`Back to ${searchParam ? `${searchParam}` : "all"} vans`}</span></Link>
+            >&larr; <span>Back to all vans</span></Link>
             <div className="van-detail">
                 <img src={vandetails.imageUrl} alt='van-detail' />
                 <i className={`van-type ${vandetails.type} selected`}>{vandetails.type}</i>

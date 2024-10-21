@@ -12,6 +12,7 @@ export default function Home() {
                         <Link to="/host">Host</Link>
                         <Link to="/about">About</Link>
                         <Link to="/vans">Vans</Link>
+                        <Link to="/login">Login</Link>
                     </ul>
                 </nav>
             </header>
